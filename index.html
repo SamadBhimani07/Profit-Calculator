@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💰 Profit Calculator</h1>
+            <p>Calculate your business profits with ease</p>
+        </header>
+
+        <div class="calculator-card">
+            <div class="month-selector">
+                <h2>📅 Select Month</h2>
+                <div class="month-input-group">
+                    <select id="month-select" class="month-dropdown">
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <select id="year-select" class="year-dropdown">
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mode-selector">
+                <h2>Choose Calculation Mode</h2>
+                <div class="mode-buttons">
+                    <button id="mode1" class="mode-btn active" data-mode="1">
+                        <span class="icon">📊</span>
+                        <span>With Expenses</span>
+                        <small>Include all business costs</small>
+                    </button>
+                    <button id="mode2" class="mode-btn" data-mode="2">
+                        <span class="icon">💵</span>
+                        <span>Simple Profit</span>
+                        <small>Just sales minus purchases</small>
+                    </button>
+                </div>
+            </div>
+
+            <div class="calculator-content">
+                <!-- Mode 1: With Expenses -->
+                <div id="calc-mode1" class="calc-mode active">
+                    <h3>📈 Calculate Profit with Expenses</h3>
+                    <form id="expense-form">
+                        <div class="input-group">
+                            <label for="purchase">Purchase Cost</label>
+                            <div class="input-wrapper">
+                                <span class="currency">$</span>
+                                <input type="number" id="purchase" placeholder="0.00" step="0.01" min="0">
+                            </div>
+                        </div>
+
+                        <div class="expenses-grid">
+                            <div class="input-group">
+                                <label for="gas">Transportation</label>
+                                <div class="input-wrapper">
+                                    <span class="currency">$</span>
+                                    <input type="number" id="gas" placeholder="0.00" step="0.01" min="0">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="storage">Storage & Utilities</label>
+                                <div class="input-wrapper">
+                                    <span class="currency">$</span>
+                                    <input type="number" id="storage" placeholder="0.00" step="0.01" min="0">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="phone">Communication</label>
+                                <div class="input-wrapper">
+                                    <span class="currency">$</span>
+                                    <input type="number" id="phone" placeholder="0.00" step="0.01" min="0">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="internet">Technology & Software</label>
+                                <div class="input-wrapper">
+                                    <span class="currency">$</span>
+                                    <input type="number" id="internet" placeholder="0.00" step="0.01" min="0">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="packing">Supplies & Materials</label>
+                                <div class="input-wrapper">
+                                    <span class="currency">$</span>
+                                    <input type="number" id="packing" placeholder="0.00" step="0.01" min="0">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="car">Equipment & Tools</label>
+                                <div class="input-wrapper">
+                                    <span class="currency">$</span>
+                                    <input type="number" id="car" placeholder="0.00" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="sale1">Total Sales</label>
+                            <div class="input-wrapper">
+                                <span class="currency">$</span>
+                                <input type="number" id="sale1" placeholder="0.00" step="0.01" min="0">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="calculate-btn">
+                            <span class="icon">🧮</span>
+                            Calculate Profit
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Mode 2: Simple Profit -->
+                <div id="calc-mode2" class="calc-mode">
+                    <h3>💵 Calculate Simple Profit</h3>
+                    <form id="simple-form">
+                        <div class="input-group">
+                            <label for="sale2">Total Sales</label>
+                            <div class="input-wrapper">
+                                <span class="currency">$</span>
+                                <input type="number" id="sale2" placeholder="0.00" step="0.01" min="0">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="purchase2">Purchase Cost</label>
+                            <div class="input-wrapper">
+                                <span class="currency">$</span>
+                                <input type="number" id="purchase2" placeholder="0.00" step="0.01" min="0">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="calculate-btn">
+                            <span class="icon">🧮</span>
+                            Calculate Profit
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" class="results-section hidden">
+                <div class="result-card">
+                    <h3>📊 Calculation Results</h3>
+                    <div class="result-content">
+                        <div class="result-item">
+                            <span class="label">Month:</span>
+                            <span id="result-month" class="value">January 2024</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">Total Expenses:</span>
+                            <span id="total-expenses" class="value">$0.00</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">Total Sales:</span>
+                            <span id="total-sales" class="value">$0.00</span>
+                        </div>
+                        <div class="result-item profit">
+                            <span class="label">Your Profit:</span>
+                            <span id="profit-amount" class="value">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button id="save-btn" class="save-btn">
+                            <span class="icon">💾</span>
+                            Save This Month
+                        </button>
+                        <button id="reset-btn" class="reset-btn">
+                            <span class="icon">🔄</span>
+                        Calculate Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Annual Chart Section -->
+            <div id="chart-section" class="chart-section">
+                <div class="chart-header">
+                    <h3>📈 Annual Profit Chart</h3>
+                    <div class="chart-controls">
+                        <button id="toggle-chart" class="toggle-chart-btn">
+                            <span class="icon">📊</span>
+                            Show Chart
+                        </button>
+                        <button id="clear-data" class="clear-data-btn">
+                            <span class="icon">🗑️</span>
+                            Clear All Data
+                        </button>
+                    </div>
+                </div>
+                <div id="chart-container" class="chart-container hidden">
+                    <canvas id="profitChart"></canvas>
+                </div>
+                <div id="chart-summary" class="chart-summary hidden">
+                    <div class="summary-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Annual Profit:</span>
+                            <span id="annual-profit" class="stat-value">$0.00</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Best Month:</span>
+                            <span id="best-month" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Average Monthly Profit:</span>
+                            <span id="avg-profit" class="stat-value">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
